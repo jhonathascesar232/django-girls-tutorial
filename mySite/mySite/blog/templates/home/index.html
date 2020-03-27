@@ -7,6 +7,69 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
+    <style>
+        .pulse{
+            margin-top: 100px;
+        }
+        .caixa, .pulse, .pulse2, .pulse3{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pulse2, .pulse3{
+            display: none;
+        }
+        @media screen and (max-width: 425px){
+            .pulse{
+                height: 200px;
+                width: 200px;
+                margin-top: 50px;
+            }
+        }
+
+        @media screen and (max-width: 768px){
+            .pulse, .pulse2, .pulse3{
+                height: 375px;
+                width: 375px;
+                margin-top: 100px;
+                
+            }
+            .pulse2{
+                display: block;
+            }
+            .pulse3{
+                display: block;
+            }
+        }
+        
+        .pulse, .pulse2, .pulse3{
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            background-color: darkturquoise;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1.5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .pulsing{
+            animation-duration: 1.5s;
+            animation-name: pulso;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes pulso {
+            0%{
+                box-shadow: 0 0 0 0 rgba(0, 206, 209, 1);
+            }
+            100%{
+                box-shadow: 0 0 0 50px rgba(0, 206, 209, 0);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="jumbotron jumbotron-fluid">
@@ -14,11 +77,42 @@
             <h1 class="display-3">Django Girls Tutors</h1> 
         </div>
     </div>
+    <div class="caixa">
+        <div class="pulse2">Hello</div>
+        <div class="pulse">Hello</div>
+        <div class="pulse3">Hello</div>
+    </div>
     
     
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        var p = document.querySelector(".pulse");
+        p.addEventListener("mouseover", function(){
+            p.classList.add("pulsing");
+        })
+        p.addEventListener("mouseout", function(){
+            p.classList.remove("pulsing");
+        })
+
+        var p2 = document.querySelector(".pulse2");
+        p2.addEventListener("mouseover", function(){
+            p2.classList.add("pulsing");
+        })
+        p2.addEventListener("mouseout", function(){
+            p2.classList.remove("pulsing");
+        })
+
+        var p3 = document.querySelector(".pulse3");
+        p3.addEventListener("mouseover", function(){
+            p3.classList.add("pulsing");
+        })
+        p3.addEventListener("mouseout", function(){
+            p3.classList.remove("pulsing");
+        })
+    </script>
 </body>
 </html>
