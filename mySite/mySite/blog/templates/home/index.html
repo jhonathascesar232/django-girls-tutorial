@@ -6,20 +6,16 @@
     <title>Django Girls</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     
     <style>
-        .pulse{
-            margin-top: 100px;
-        }
-        .caixa, .pulse, .pulse2, .pulse3{
+        .caixa, .pulse{
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .pulse2, .pulse3{
-            display: none;
-        }
         @media screen and (max-width: 425px){
             .pulse{
                 height: 200px;
@@ -32,15 +28,13 @@
             .pulse, .pulse2, .pulse3{
                 height: 375px;
                 width: 375px;
-                margin-top: 100px;
+                
                 
             }
-            .pulse2, .pulse3{
-                display: flex;
-            }
+            
         }
         
-        .pulse, .pulse2, .pulse3{
+        .pulse{
             margin-left: 20px;
             margin-right: 20px;
             height: 200px;
@@ -69,18 +63,24 @@
     </style>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <h1 class="display-3">Django Girls Tutors</h1> 
         </div>
     </div>
-    <div class="caixa">
-        <div class="">
-            <div class="pulse2">Hello</div>
-            <div class="pulse">Hello</div>
-            <div class="pulse3">Hello</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="caixa">
+                <div class="">
+                    
+                    <div class="pulse">Hello</div>
+                    
+                </div>
+            </div>
         </div>
+        
     </div>
+    
     
     
 
@@ -97,21 +97,6 @@
             p.classList.remove("pulsing");
         })
 
-        var p2 = document.querySelector(".pulse2");
-        p2.addEventListener("mouseover", function(){
-            p2.classList.add("pulsing");
-        })
-        p2.addEventListener("mouseout", function(){
-            p2.classList.remove("pulsing");
-        })
-
-        var p3 = document.querySelector(".pulse3");
-        p3.addEventListener("mouseover", function(){
-            p3.classList.add("pulsing");
-        })
-        p3.addEventListener("mouseout", function(){
-            p3.classList.remove("pulsing");
-        })
     </script>
 </body>
 </html>
