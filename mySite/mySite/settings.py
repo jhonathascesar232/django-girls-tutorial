@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import socket
+from decouple import config
+from dj_database_url import parse
+import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,13 +25,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w)9$@zixebcens28(4&7f066v+zr72b)joixxk1oy@3go$leek'
+# SECRET_KEY = 'w)9$@zixebcens28(4&7f066v+zr72b)joixxk1oy@3go$leek'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['jhonathascesar232.pythonanywhere.com', '127.0.0.1']
 
+
+
+
+#
+# config. de localhost ou serverhost
+#
+if socket.gethostname() == "server_name":
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = config('DEBUG', default=False,cast=bool)
+
+    ALLOWED_HOSTS = ['gestao-pessoas-django.herokuapp.com',]
+    
+else:
+    SECRET_KEY = 'w)9$@zixebcens28(4&7f066v+zr72b)joixxk1oy@3go$leek'
+    DEBUG = True
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
 
 # Application definition
 
@@ -121,3 +142,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+django_heroku.settings(locals())
