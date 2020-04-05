@@ -39,10 +39,11 @@ ALLOWED_HOSTS = ['jhonathascesar232.pythonanywhere.com', '127.0.0.1']
 # config. de localhost ou serverhost
 #
 if socket.gethostname() == "server_name":
+    SECRET_KEY = config('SECRET_KEY')
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = config('DEBUG', default=False,cast=bool)
 
-    ALLOWED_HOSTS = ['gestao-pessoas-django.herokuapp.com',]
+    ALLOWED_HOSTS = ['django-girls-tuto.herokuapp.com',]
     
 else:
     SECRET_KEY = 'w)9$@zixebcens28(4&7f066v+zr72b)joixxk1oy@3go$leek'
